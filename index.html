@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>She Shifted — Join the Waitlist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F2;
+    --gold: #C4A96B;
+    --gold-light: #D4BC8A;
+    --deep: #1A1612;
+    --brown: #3D2E1E;
+    --muted: #8B7D6B;
+    --soft: #E8E0D4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(196,169,107,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .hero-body {
+    max-width: 520px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-body strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* Form */
+  .form-wrap {
+    width: 100%;
+    max-width: 420px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .form-wrap input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(196,169,107,0.25);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-wrap input::placeholder { color: rgba(245,240,232,0.35); }
+  .form-wrap input:focus { border-color: var(--gold); }
+
+  .btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 18px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .form-note {
+    font-size: 11px;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 0.05em;
+    margin-top: 14px;
+  }
+
+  /* What section */
+  .section {
+    padding: 100px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.65);
+    max-width: 580px;
+  }
+
+  .section-body p { margin-bottom: 20px; }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* Pillars */
+  .pillars {
+    padding: 0 24px 100px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  @media (max-width: 600px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+
+  .pillar {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(196,169,107,0.1);
+    padding: 40px 32px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .pillar:hover {
+    border-color: rgba(196,169,107,0.3);
+    background: rgba(196,169,107,0.04);
+  }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .pillar-body {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.55);
+  }
+
+  /* Quote block */
+  .quote-section {
+    padding: 80px 24px;
+    text-align: center;
+    position: relative;
+  }
+
+  .quote-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+  }
+
+  .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    max-width: 600px;
+    margin: 0 auto 24px;
+    line-height: 1.5;
+  }
+
+  .quote-attr {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Bottom CTA */
+  .bottom-cta {
+    padding: 100px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(196,169,107,0.1);
+  }
+
+  .bottom-cta .hero-title { font-size: clamp(36px, 6vw, 64px); }
+
+  /* Footer */
+  footer {
+    padding: 40px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  footer p {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.2);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Success state */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 24px;
+    border: 1px solid rgba(196,169,107,0.3);
+    background: rgba(196,169,107,0.05);
+  }
+
+  .success-msg p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow">Becoming HER Collective</p>
+  <h1 class="hero-title">She<br><em>Shifted</em></h1>
+  <p class="hero-subtitle">A space to do the work of becoming her.</p>
+  <div class="divider"></div>
+  <p class="hero-body">
+    This isn't a course you watch and forget. <strong>She Shifted</strong> is a living, breathing space where women practice shifting how they think, how they move through life, and how they show up for themselves — with the structure, support, and community to actually make it stick.
+    <br><br>
+    Not becoming perfect. Becoming <strong>aware. Intentional. Aligned.</strong>
+  </p>
+
+  <div class="form-wrap">
+    <div id="waitlist-form">
+      <input type="text" id="name" placeholder="Your first name" />
+      <input type="email" id="email" placeholder="Your email address" />
+      <button class="btn" onclick="handleSubmit()">Join the Waitlist</button>
+      <p class="form-note">Founding member access — and the lifetime option — won't last long.</p>
+    </div>
+    <div class="success-msg" id="success">
+      <p>You're on the list, love. ✨<br>Watch for an email from Shannon soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="section">
+  <p class="section-label">What She Shifted Is</p>
+  <h2 class="section-title">The free challenges gave you<br>a <em>moment.</em><br>This gives you a <em>life.</em></h2>
+  <div class="section-body">
+    <p>You've resonated with the content. You've done the monthly challenges. You've had the awareness moments. But awareness without a container to grow in just feels like spinning.</p>
+    <p>She Shifted is where the real work happens. Where reflection turns into actual change. Where you stop consuming content about becoming her and start living it — inside a small, intentional space built around women who are serious about this work.</p>
+    <p>Everything inside works together. The modules introduce the ideas. The integration calls help you process what you're noticing. The challenges help you practice in real life. And the deep dives expand the concepts that create lasting change.</p>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<div class="pillars">
+  <p class="section-label">What's Inside</p>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <p class="pillar-number">01</p>
+      <h3 class="pillar-title">Self-Paced Identity Modules</h3>
+      <p class="pillar-body">Short, intentional lessons on identity, awareness, and alignment — designed to slow you down enough to see where you are and who you're becoming. Everyone begins with <em>The Truth About Becoming HER.</em></p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-number">02</p>
+      <h3 class="pillar-title">Weekly Integration Calls</h3>
+      <p class="pillar-body">This is where the real work happens. We come together live every week — not for lectures, but for honest conversation. What are you noticing? Where do you feel out of alignment? Shannon guides you through it in real time.</p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-number">03</p>
+      <h3 class="pillar-title">Monthly Growth Challenges</h3>
+      <p class="pillar-body">Every month, a challenge designed to help you practice the work in real life — not just think about it. Some will stretch you. Some will ground you. All of them will move you.</p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-number">04</p>
+      <h3 class="pillar-title">Monthly Deep Dive Workshops</h3>
+      <p class="pillar-body">Longer sessions that go beneath the surface — exploring the deeper layers of identity, mindset, and the shifts that come with real growth. This is where the transformation expands.</p>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <p class="quote">"It's not about becoming perfect.<br>It's about becoming aware,<br>intentional, and aligned."</p>
+  <p class="quote-attr">— Shannon Renee, Founder</p>
+</div>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <p class="eyebrow" style="opacity:1; animation:none;">Founding Access</p>
+  <h2 class="hero-title" style="opacity:1; animation:none; margin-bottom: 16px;">She's <em>waiting</em><br>for you.</h2>
+  <p style="font-size:15px; color: rgba(245,240,232,0.6); max-width:420px; margin: 0 auto 48px; line-height:1.9;">
+    Founding members get the lowest price She Shifted will ever be — including a lifetime access option that disappears once founding closes. Join the waitlist to be first.
+  </p>
+  <div class="form-wrap" style="margin: 0 auto;">
+    <input type="text" id="name2" placeholder="Your first name" />
+    <input type="email" id="email2" placeholder="Your email address" />
+    <button class="btn" onclick="handleSubmit2()">I'm Ready — Add Me to the List</button>
+    <p class="form-note">No spam. Just intentional updates from Shannon.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Becoming HER Lounge · She Shifted: The Becoming HER Collective</p>
+</footer>
+
+<script>
+  function handleSubmit() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    if (!name || !email) return;
+    document.getElementById('waitlist-form').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+  }
+
+  function handleSubmit2() {
+    const name = document.getElementById('name2').value;
+    const email = document.getElementById('email2').value;
+    if (!name || !email) { return; }
+    alert("You're on the list! Watch for an email from Shannon soon. ✨");
+  }
+</script>
+</body>
+</html>
